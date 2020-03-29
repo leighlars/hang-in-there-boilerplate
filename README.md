@@ -77,6 +77,11 @@ Saved posters view:
 
 ## Iteration 4 - Deleting Saved Posters
 
+* Completed 3/29/2020. Driver- Leigh / Navigator- Jenna. Sought mentorship from Turing Alum, Ryan, as well as Mod 2 student, Collin.
+* We demonstrated how to double click on our saved posters to remove them from the saved poster grid.
+* We demonstrated how to save the randomized poster into our saved poster gird.
+* We demonstrated how to clean up our JavaScript according to the JavaScript style guide.
+
 - From the saved posters view, if a user double clicks a saved poster, it will be deleted
 
 _Hint: How will you update the data model to achieve this?_
