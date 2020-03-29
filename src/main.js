@@ -128,6 +128,7 @@ showMain.addEventListener('click', returnToMain);
 showRandom.addEventListener('click', randomizePoster);
 makePoster.addEventListener('click', showNewPoster);
 savePoster.addEventListener('click', storePoster);
+posterGrid.addEventListener('dblclick', removePoster);
 
 
 // functions and event handlers go here 👇
@@ -137,9 +138,13 @@ function getRandomIndex(array) {
 }
 
 function randomizePoster() {
-  updateTitle.innerText = titles[getRandomIndex(titles)];
-  updateQuote.innerText = quotes[getRandomIndex(quotes)];
-  updateImg.src = images[getRandomIndex(images)];
+  var newTitle = titles[getRandomIndex(titles)];
+  var newQuote = quotes[getRandomIndex(quotes)];
+  var newImage= images[getRandomIndex(images)]
+  updateTitle.innerText = newTitle;
+  updateQuote.innerText = newQuote;
+  updateImg.src = newImage;
+  currentPoster = new Poster(newImage, newTitle, newQuote);
 }
 
 function createOwnPosterForm() {
@@ -192,11 +197,24 @@ function showPosterGrid() {
   if(savedPosters.length != 0) {
     for (var i = 0; i < savedPosters.length; i++) {
       posterGrid.insertAdjacentHTML("afterbegin", `
-         <div class="mini-poster">
+         <div class="mini-poster" data-id=${savedPosters[i].id}>
           <img src=${savedPosters[i].imageURL}>
           <h2>${savedPosters[i].title}</h2>
           <h4>${savedPosters[i].quote}</h4>
          </div>`);
+    }
+  }
+}
+
+function removePoster(event) {
+  if (event.target.closest(".mini-poster")) {
+    var posterToDeleteHTML = event.target.closest(".mini-poster");
+    for (var i = 0; i < savedPosters.length; i++) {
+      if (savedPosters[i].id == posterToDeleteHTML.dataset.id) {
+        savedPosters.splice(savedPosters[i], 1);
+        posterGrid.innerHTML = "";
+        showPosterGrid();
+      }
     }
   }
 }
