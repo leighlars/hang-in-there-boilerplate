@@ -185,9 +185,9 @@ function noDuplicatePosters() {
 }
 
 function storePoster() {
-  images.push(inputImage).value;
-  titles.push(inputTitle).value;
-  quotes.push(inputQuote).value;
+  images.push(inputImage.value);
+  titles.push(inputTitle.value);
+  quotes.push(inputQuote.value);
   if(noDuplicatePosters()) {
     savedPosters.push(currentPoster);
   }
